@@ -26,7 +26,7 @@ const getUsersForSidebar = async (req, res) => {
 // @access  Private
 const getMessages = async (req, res) => {
   try {
-    const { id: userIdToChat } = req.params;
+    const { userId: userIdToChat } = req.params;
     const myId = req.user._id;
 
     const chatMessages = await Message.find({
@@ -50,7 +50,7 @@ const sendMessage = async (req, res) => {
   try {
     // Grab text & image
     const { text, image } = req.body;
-    const { id: receiverId } = req.params;
+    const { userId: receiverId } = req.params;
     const senderId = req.user._id;
 
     let imgURL;

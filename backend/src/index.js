@@ -22,7 +22,7 @@ app.use(express.urlencoded({ extended: true, limit: "16kb" }));
 app.use(cookieParser());
 app.use(
   cors({
-    origin: process.env.CORS_ORIGIN,
+    origin: ["http://localhost:5173"],
     credentials: true,
   })
 );
@@ -38,7 +38,7 @@ if (process.env.NODE_ENV === "production") {
 
   // match any route, send back React's static index.html file in dist folder
   app.get("*", (req, res) => {
-    res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+    res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
   });
 }
 

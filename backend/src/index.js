@@ -37,7 +37,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
   // match any route, send back React's static index.html file in dist folder
-  app.get("*", (req, res) => {
+  app.get(/^\/(?!api\/).*/, (req, res) => {
     res.sendFile(path.join(__dirname, "../frontend", "dist", "index.html"));
   });
 }
